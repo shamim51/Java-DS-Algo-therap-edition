@@ -3,7 +3,7 @@ package data_structure.graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFS extends Graph{
+/*public class BFS extends Graph{
     BFS(int v) {
         super(v);
     }
@@ -52,4 +52,4 @@ public class BFS extends Graph{
 
         g.bfs(0);
     }
-}
+}*/

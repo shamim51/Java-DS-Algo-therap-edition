@@ -33,6 +33,8 @@ public class Graph {
         }
     }
 
+
+
     void bfs(int startNode)
     {
         // Create a queue for BFS
@@ -60,9 +62,24 @@ public class Graph {
                 }
             }
         }
+        System.out.print("\n");
+    }
+    void dfsUtil(boolean[] visited, int currentNode){
+        visited[currentNode] = true;
+
+        System.out.print(currentNode+" ");
+
+        for (Integer i : adjList.get(currentNode)) {
+            if (!visited[i])
+                dfsUtil(visited, i);
+        }
     }
 
+    void dfs(int currentNode){
+        boolean[] visited = new boolean[v];
 
+        dfsUtil(visited, currentNode);
+    }
     public static void main(String[] args) {
         Graph g = new Graph(5);
         g.addEdge(0, 1);
@@ -73,9 +90,11 @@ public class Graph {
         g.addEdge(2, 3);
         g.addEdge(3, 4);
 
-        g.printGraph();
+        //g.printGraph();
 
         g.bfs(0);
+
+        g.dfs(0);
 
 
     }
