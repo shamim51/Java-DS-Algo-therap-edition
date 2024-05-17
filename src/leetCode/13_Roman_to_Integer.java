@@ -1,5 +1,8 @@
 package leetCode;
 
+import java.util.HashMap;
+import java.util.Stack;
+
 class RomanToINteger{
     public int romanToInt(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
@@ -13,16 +16,24 @@ class RomanToINteger{
         map.put('M', 1000);
 
         int sum = 0;
-        for(int i = 1; i < s.length(); i++){
+        Character prev = 'I';
 
-            if( map.getValue(s.charAt(i)) > map.getValue(s.charAt(i-1)) ){
-                sum = sum + ( map.getValue(s.charAt(i))-map.getValue(s.charAt(i-1)) );
+        for(int i = s.length()-1; i >= 0; i--){
+            if(map.get(s.charAt(i)) < map.get(prev)){
+                sum = sum - map.get(s.charAt(i));
             }
             else{
-                sum = sum + ( map.getValue(s.charAt(i)) + map.getValue(s.charAt(i-1)) );
+                sum = sum + map.get(s.charAt(i));
             }
-            sum = sum + map.getValue(s.charAt(i));
-
+            prev = s.charAt(i);
         }
         return sum;
+    }
+
+    public static void main(String[] args) {
+        RomanToINteger r = new RomanToINteger();
+
+        System.out.println(r.romanToInt("MCMXCIV"));
+
+    }
 }
