@@ -1,0 +1,5 @@
+package leetCode;
+
+class Solution{
+
+}
